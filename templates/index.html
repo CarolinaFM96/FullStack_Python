@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+
+  <!-- Para permitir que o layout se adapte ao ecrã do telemóvel -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aplicação To‑Do • Flask + MySQL</title>
+
+  <!-- Ligamos o nosso ficheiro de estilos -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+
+    <!-- Título principal -->
+    <h1>Lista de Tarefas</h1>
+
+    <!-- Formulário para adicionar uma nova tarefa -->
+    <form id="todo-form">
+      <!-- Campo de texto onde o utilizador escreve a tarefa -->
+      <input
+        id="todo-input"
+        type="text"
+        placeholder="Escreve uma nova tarefa ..."
+        autocomplete="off"
+      />
+      <!-- Botão do formulário -->
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <!-- Lista (ul) onde as tarefas vão aparecer -->
+    <ul id="todo-list">
+      <!-- Os <li> são criados dinamicamente em JavaScript -->
+    </ul>
+
+  </main>
+
+  <!-- Ligamos o nosso ficheiro JavaScript -->
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

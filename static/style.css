@@ -1,0 +1,88 @@
+/* ========== Estilos Globais ========== */
+
+/* Vamos usar uma fonte que funciona em todos os sistemas */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f5f5f5;     /* Cinzento muito claro */
+  margin: 0;                     /* Tira a margem default */
+}
+
+/* Um contentor branco centrado na página */
+.container {
+  max-width: 600px;              /* Largura máxima */
+  margin: 3rem auto;             /* 3rem em cima/baixo, auto nas laterais */
+  background-color: #ffffff;     /* Fundo branco */
+  padding: 2rem;                 /* Espaçamento interno */
+  border-radius: 12px;           /* Cantos arredondados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* ========== Título ========== */
+
+h1 {
+  margin-top: 0;                 /* Remove espaço extra em cima */
+  text-align: center;            /* Centraliza o texto */
+}
+
+/* ========== Formulário ========== */
+
+#todo-form {
+  display: flex;                 /* Coloca input e botão na mesma linha */
+  gap: 0.5rem;                   /* Espaço entre eles */
+}
+
+#todo-form input {
+  flex: 1;                       /* Ocupa todo o espaço disponível */
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#todo-form button {
+  padding: 0 1rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #0077cc;     /* Azul */
+  color: #fff;                   /* Texto branco */
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#todo-form button:hover {
+  background-color: #005fa3;     /* Azul um pouco mais escuro */
+}
+
+/* ========== Lista de Tarefas ========== */
+
+#todo-list {
+  list-style: none;              /* Remove as bolinhas à esquerda */
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+#todo-list li {
+  display: flex;                 /* Põe texto e botões em linha */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee; /* Linha cinzenta muito clara */
+}
+
+#todo-list li.done span {
+  text-decoration: line-through; /* Risco no texto concluído */
+  color: #999;                   /* Cor cinzenta */
+}
+
+/* Botões da lista (concluir ou apagar) */
+#todo-list li button {
+  margin-left: 0.25rem;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#todo-list li button:hover {
+  color: #0077cc;                /* Azul quando passa o rato por cima */
+}
