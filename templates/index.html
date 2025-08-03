@@ -1,43 +1,144 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html>
 <head>
-  <meta charset="UTF-8" />
-
-  <!-- Para permitir que o layout se adapte ao ecrã do telemóvel -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Aplicação To‑Do • Flask + MySQL</title>
-
-  <!-- Ligamos o nosso ficheiro de estilos -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Space Defender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='game.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .instructions {
+            max-width: 250px;
+            padding: 20px;
+            background: rgba(30, 30, 40, 0.8);
+            border: 3px solid #555;
+            border-radius: 10px;
+            margin: 0 20px;
+            line-height: 1.6;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .instructions h3 {
+            color: #ff3366;
+            margin-top: 0;
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 16px;
+        }
+        
+        .instructions ul {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+        }
+        
+        .key {
+            display: inline-block;
+            background: #444;
+            border: 2px solid #555;
+            border-radius: 5px;
+            padding: 3px 8px;
+            margin: 0 3px;
+            font-size: 14px;
+            min-width: 30px;
+            text-align: center;
+            font-family: 'Press Start 2P', cursive;
+        }
+        
+        .game-layout {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #game-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-  <main class="container">
+    <div class="game-layout">
+        <!-- Painel de instruções esquerdo -->
+        <div class="instructions">
+            <h3>CONTROLS</h3>
+            <ul>
+                <li><span class="key">←</span> Move left</li>
+                <li><span class="key">→</span> Move right</li>
+                <li><span class="key">SPACE</span> Shoot</li>
+            </ul>
+            
+            <h3>OBJECTIVE</h3>
+            <p>Destroy asteroids before they hit your ship!</p>
+            
+            <h3>SCORING</h3>
+            <ul>
+                <li>+10 points per asteroid</li>
+                <li>Extra life every 500 points</li>
+            </ul>
+        </div>
+        
+        <!-- Área do jogo -->
+        <div id="game-container">
+            <div id="space-game">
+                <div id="player"></div>
+                <div id="score">SCORE: 0</div>
+                <div id="lives">LIVES: 3</div>
+                <div id="game-over">GAME OVER</div>
+            </div>
+            
+            <!-- Controles abaixo do jogo -->
+            <div id="game-controls">
+                <button id="start-btn">START (SPACE)</button>
+                <button id="skip-btn">SKIP TO TODOS</button>
+            </div>
+        </div>
+        
+        <!-- Painel de instruções direito -->
+        <div class="instructions">
+            <h3>POWER-UPS</h3>
+            <ul>
+                <li>
+                    <span style="color: #66ff66">GREEN</span> - Rapid fire
+                </li>
+                <li>
+                    <span style="color: #3366ff">BLUE</span> - Shield
+                </li>
+                <li>
+                    <span style="color: #ffcc00">YELLOW</span> - Extra life
+                </li>
+            </ul>
+            
+            <h3>TIPS</h3>
+            <ul>
+                <li>Stay near the bottom</li>
+                <li>Shoot constantly</li>
+                <li>Prioritize large asteroids</li>
+                <li>Collect power-ups quickly</li>
+            </ul>
+            
+            <h3>HIGH SCORES</h3>
+            <ol>
+                <li>1250 - SPACE_HERO</li>
+                <li>980 - ASTRO_GUARD</li>
+                <li>750 - COSMIC_PILOT</li>
+            </ol>
+        </div>
+    </div>
 
-    <!-- Título principal -->
-    <h1>Lista de Tarefas</h1>
-
-    <!-- Formulário para adicionar uma nova tarefa -->
-    <form id="todo-form">
-      <!-- Campo de texto onde o utilizador escreve a tarefa -->
-      <input
-        id="todo-input"
-        type="text"
-        placeholder="Escreve uma nova tarefa ..."
-        autocomplete="off"
-      />
-      <!-- Botão do formulário -->
-      <button type="submit">Adicionar</button>
-    </form>
-
-    <!-- Lista (ul) onde as tarefas vão aparecer -->
-    <ul id="todo-list">
-      <!-- Os <li> são criados dinamicamente em JavaScript -->
-    </ul>
-
-  </main>
-
-  <!-- Ligamos o nosso ficheiro JavaScript -->
-  <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
 </body>
 </html>

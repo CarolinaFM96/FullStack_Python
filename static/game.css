@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background: #000;
+    font-family: 'Press Start 2P', cursive;
+    background-image: radial-gradient(circle at center, #1a1a2e 0%, #16213e 100%);
+}
+
+#space-game {
+    width: 600px;
+    height: 400px;
+    background: #000;
+    border: 4px solid #555;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 51, 102, 0.3);
+}
+
+#player {
+    width: 30px;
+    height: 30px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15 0 L30 30 L15 20 L0 30 Z" fill="%2300ff00"/></svg>') no-repeat center;
+    position: absolute;
+    bottom: 10px;
+    left: 285px;
+    z-index: 10;
+}
+
+.enemy {
+    width: 25px;
+    height: 25px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25"><circle cx="12.5" cy="12.5" r="12.5" fill="%23ff0000"/></svg>') no-repeat center;
+    position: absolute;
+    z-index: 5;
+}
+
+.bullet {
+    width: 5px;
+    height: 10px;
+    background: #0ff;
+    position: absolute;
+    z-index: 5;
+}
+
+.power-up {
+    position: absolute;
+    font-size: 20px;
+    text-align: center;
+    z-index: 5;
+}
+
+#score, #lives {
+    position: absolute;
+    top: 10px;
+    color: #fff;
+    font-size: 16px;
+    z-index: 10;
+    text-shadow: 0 0 5px #000;
+}
+
+#score {
+    left: 10px;
+}
+
+#lives {
+    right: 10px;
+}
+
+#game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #f00;
+    font-size: 24px;
+    display: none;
+    z-index: 20;
+    text-shadow: 0 0 10px #000;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#start-btn, #skip-btn {
+    padding: 12px 25px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 6px;
+    margin: 5px;
+    width: 200px;
+}
+
+#start-btn { 
+    background: linear-gradient(135deg, #ff3366 0%, #cc0044 100%);
+    box-shadow: 
+        0 0 10px rgba(255, 51, 102, 0.5),
+        0 4px 0 #cc0044;
+}
+
+#skip-btn { 
+    background: linear-gradient(135deg, #3366ff 0%, #0033cc 100%);
+    box-shadow: 
+        0 0 10px rgba(51, 102, 255, 0.5),
+        0 4px 0 #0033cc;
+}
+
+#start-btn:hover, #skip-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 0 15px rgba(255, 51, 102, 0.8),
+        0 6px 0 #cc0044;
+}
+
+#skip-btn:hover {
+    box-shadow: 
+        0 0 15px rgba(51, 102, 255, 0.8),
+        0 6px 0 #0033cc;
+}
+
+#start-btn:active, #skip-btn:active {
+    transform: translateY(3px);
+    box-shadow: 
+        0 0 5px rgba(255, 51, 102, 0.3),
+        0 1px 0 #cc0044;
+}
+
+#skip-btn:active {
+    box-shadow: 
+        0 0 5px rgba(51, 102, 255, 0.3),
+        0 1px 0 #0033cc;
+}
+
+@media (max-width: 1200px) {
+    .game-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .instructions {
+        max-width: 600px;
+        margin: 0 0 30px 0;
+    }
+}
+
+@media (max-width: 650px) {
+    #space-game {
+        width: 95vw;
+        height: 60vh;
+    }
+    
+    #player {
+        left: calc(50% - 15px);
+    }
+    
+    .instructions {
+        width: 95vw;
+        max-width: none;
+    }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pixel Todo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='todo.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Pixel decorations -->
+        <div class="pixel-decoration deco-1"></div>
+        <div class="pixel-decoration deco-2"></div>
+        <div class="pixel-decoration deco-3"></div>
+        <div class="pixel-decoration deco-4"></div>
+        
+        <h1>PIXEL TODO</h1>
+        
+        <form id="todo-form" action="/add" method="POST">
+            <input type="text" name="text" placeholder="NEW TASK" required>
+            <select name="category">
+                <option value="">NO CATEGORY</option>
+                {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name|upper }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">ADD</button>
+        </form>
+        
+        <ul id="todo-list">
+            {% for todo in todos %}
+            <li class="{% if todo.done %}done{% endif %}">
+                <span class="task-text">{{ todo.text }}</span>
+                {% if todo.category %}
+                <span class="category" style="background-color: {{ todo.category.color }};">
+                    {{ todo.category.name|upper }}
+                </span>
+                {% endif %}
+                <div class="actions">
+                    <a href="/complete/{{ todo.id }}" class="complete-btn">✓</a>
+                    <a href="/delete/{{ todo.id }}" class="delete-btn">✗</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        
+        <div class="random-section">
+            <button id="random-btn">RANDOM</button>
+            <span id="random-result"></span>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='todo.js') }}"></script>
+</body>
+</html>
